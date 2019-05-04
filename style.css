@@ -1,0 +1,62 @@
+#form1
+{
+    margin-top:20px;
+}
+#team {
+    background: #fff !important;
+}
+
+#details
+{
+    z-index: 20;
+    border-radius: 6px;
+    border-color: cadetblue;
+    position:absolute;
+    background-color: #eee !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #108d6f;
+    border-color: #108d6f;
+    outline: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007b5e;
+    border-color: #007b5e;
+}
+
+section {
+    margin:0px 10px 0px 10px;
+    padding: 60px 0;
+}
+#divcard
+{
+    background-color: #eee !important;
+}
+#team .card {
+    border: none;
+    background: #ffffff;
+}
+.card {
+    min-height: 312px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.card a {
+    font-size: 18px;
+    color: #000000 !important;
+}
+
+.card .card-title {
+    color: #000000 !important;
+}
+
+ .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}

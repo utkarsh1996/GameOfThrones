@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script>
+var app = angular.module("app", []);
+app.controller("appController", ['$scope', '$http', function($scope, $http) {
+$scope.jsonData = [];
+$http.get('GOT.json').then(function(response) {
+$scope.jsonData = response.data;
+
+});
+}]);
+</script>
+</head>
+
+<body>
+    <div ng-app="app">
+    <div ng-controller="appController">
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+            <div class="col-sm-6"> 
+                <h2>Details of GOT characters</h2>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group" id="form1">
+                    <input class="form-control" placeholder="Enter GOT character to search" ng-model="characterInput">
+                </div>
+            </div>
+            </div>
+        </div>
+        <section id="team">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4" id="divcard" ng-repeat="data in jsonData | filter: {characterName : characterInput}">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src=" {{ data.characterImageThumb }}" alt="Sorry!! Currently Image not available"></p>
+                                    <h4 class="card-title">{{ data.characterName }}</h4>
+                                    <p class="card-text">This character played by: {{ data.actorName }}.</p>
+                                    <button class="btn btn-primary" id="mybutton" ng-click="isVisible=(isVisible? false : true)">Know More</button>
+                                    <div ng-show="isVisible" id="details">
+                                     <p>Character Name: {{ data.characterName }}</p>
+                                     <p>House Name: {{ data.houseName }}</p>
+                                     <p>Parents: {{ data.parents }}</p>
+                                     <p>Parent of: {{ data.parentOf }}</p>
+                                     <p>Siblings: {{ data.siblings }}</p>
+                                     <p>Married to: {{ data.marriedEngaged }}</p>
+                                     <p>Killed: {{ data.killed?data.killed : "None" }}</p>
+                                     <p>Killed By: {{ data.killedBy?data.killedBy : "Alive" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+                </div>
+        </section>
+    </div>
+    </div>
+    </div>
+    
+</body>
+
+</html>
